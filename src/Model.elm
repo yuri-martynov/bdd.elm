@@ -5,6 +5,7 @@ type Model
     = Number Int
     | Add Model Model
 
+create n = Number n
 
 display model =
     case model of
@@ -14,5 +15,5 @@ display model =
         Add (Number n) (Number 0) ->
             n
 
-        Add old n ->
-            display n
+        Add a b ->
+            display b

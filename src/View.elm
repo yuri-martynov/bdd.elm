@@ -3,7 +3,7 @@ module View exposing (view)
 import Html exposing (..)
 import Html.Events exposing (..)
 import List
-import Model exposing (..)
+import Model exposing (display)
 import Msg exposing (..)
 
 
