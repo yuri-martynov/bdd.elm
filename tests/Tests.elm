@@ -13,6 +13,9 @@ suite =
         [ test "Starts with 0" <|
             \_ ->
                 -- a |> b = b a
+                -- sin 90 = 90 |> sin
+                -- abs (sin 90) = 90 |> sin |> abs
+                
                 -- equal 0 (display init) 
                 init 
                     |> display 
