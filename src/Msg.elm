@@ -1,3 +1,6 @@
 module Msg exposing (..)
 
-type alias Msg = Int
+
+type Msg
+    = Digit Int
+    | Plus

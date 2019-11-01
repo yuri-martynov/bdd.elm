@@ -2,4 +2,4 @@ module Init exposing (init)
 
 import Model exposing (..)
 
-init = 0
+init = Number 0

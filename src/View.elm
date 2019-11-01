@@ -8,30 +8,24 @@ import Msg exposing (..)
 
 
 view model =
-    display model
+    screen (display model)
         ++ buttons
         ++ digits
         |> div []
 
 
-display model =
+screen model =
     [ div [] [ text (String.fromInt model) ] ]
 
 
 buttons =
-    []
-
-
-
--- [ btn Increment "+"
--- , btn Equals "="
--- , button [ onClick Decrement ] [ text "-" ]
--- ]
+    [ btn Plus "+"
+    ]
 
 
 digit d =
     btn
-        d
+        (Digit d)
         (d |> String.fromInt)
 
 
