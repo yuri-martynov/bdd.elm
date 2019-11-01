@@ -2,10 +2,10 @@ module Tests exposing (..)
 
 import Expect exposing (..)
 import Init exposing (..)
+import Model exposing (..)
 import Msg exposing (..)
 import Test exposing (..)
 import Update exposing (..)
-import Model exposing (..)
 
 
 suite =
@@ -46,7 +46,6 @@ suite =
                     |> update Plus
                     |> display
                     |> equal 13
-
         , test "Given 13 entered when + is clicked and 3 is clicked displays 3" <|
             \_ ->
                 13
