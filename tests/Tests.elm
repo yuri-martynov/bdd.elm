@@ -1,4 +1,4 @@
-module Example exposing (..)
+module Tests exposing (..)
 
 import Expect exposing (..)
 import Init exposing (..)
@@ -10,7 +10,5 @@ import Update exposing (..)
 suite =
     describe "..."
         [ 
+
         ]
-
-
-
