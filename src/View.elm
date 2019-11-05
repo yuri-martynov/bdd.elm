@@ -1,6 +1,7 @@
 module View exposing (view)
 
 import Html exposing (..)
+import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import List
 import Model exposing (display)
@@ -8,19 +9,41 @@ import Msg exposing (..)
 
 
 view model =
-    screen (display model)
-        ++ buttons
+    css
+        :: screen model
+        :: buttons
         ++ digits
-        |> div []
+        |> div [ class "calc-body" ]
+        |> List.singleton
+        |> div [ class "container" ]
 
 
 screen model =
-    [ div [] [ text (String.fromInt model) ] ]
+    [ operation model
+    , typed model
+    ]
+        |> div [ class "calc-screen" ]
+
+
+typed model =
+    [ model |> display |> String.fromInt |> text
+    , "_" |> text |> List.singleton |> span [ class "blink-me" ]
+    ]
+        |> div [ class "calc-typed" ]
+
+
+operation model =
+    div [ class "calc-operation" ] []
 
 
 buttons =
     [ btn Plus "+"
     ]
+
+
+digits =
+    List.range 0 9
+        |> List.map digit
 
 
 digit d =
@@ -29,10 +52,11 @@ digit d =
         (d |> String.fromInt)
 
 
-digits =
-    List.range 0 9
-        |> List.map digit
-
-
 btn msg label =
-    button [ onClick msg ] [ text label ]
+    button
+        [ onClick msg, class "button" ]
+        [ text label ]
+
+
+css =
+    node "link" [ rel "stylesheet", href "style.css" ] []

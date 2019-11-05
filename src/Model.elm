@@ -15,5 +15,5 @@ display model =
         Add (Number n) (Number 0) ->
             n
 
-        Add a b ->
+        Add _ b ->
             display b

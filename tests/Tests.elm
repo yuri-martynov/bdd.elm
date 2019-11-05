@@ -15,12 +15,10 @@ suite =
                 -- a |> b = b a
                 -- sin 90 = 90 |> sin
                 -- abs (sin 90) = 90 |> sin |> abs
-                
-                -- equal 0 (display init) 
-                init 
-                    |> display 
+                -- equal 0 (display init)
+                init
+                    |> display
                     |> equal 0
-
         , test "When 8 is clicked displays 8" <|
             \_ ->
                 -- equal 8 (display (update 8 init))
@@ -28,7 +26,6 @@ suite =
                     |> update (Digit 8)
                     |> display
                     |> equal 8
-
         , test "When 1 is clicked displays 1" <|
             \_ ->
                 init
