@@ -26,7 +26,7 @@ screen model =
 
 
 typed model =
-    [ model |> display |> String.fromInt |> text
+    [ model |> display |> String.fromFloat |> text
     , "_" |> text |> List.singleton |> span [ class "blink-me" ]
     ]
         |> div [ class "calc-typed" ]
@@ -44,6 +44,7 @@ buttons =
     [ btn (OperationMsg Add) "+"
     , btn (OperationMsg Sub) "-"
     , btn (OperationMsg Multiply) "x"
+    , btn (OperationMsg Divide) "/"
     , btn Equal "="
     ]
 

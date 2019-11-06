@@ -2,7 +2,7 @@ module Model exposing (Model(..), Operations(..), display, history, none, number
 
 
 type Model
-    = Number Int
+    = Number Float
     | Operation Operations Model Model
     | None
 
@@ -11,14 +11,7 @@ type Operations
     = Add
     | Sub
     | Multiply
-
-
-none =
-    None
-
-
-number n =
-    Number n
+    | Divide
 
 
 display model =
@@ -52,10 +45,18 @@ history model =
             ""
 
         Number n ->
-            String.fromInt n
+            String.fromFloat n
 
         Operation op a b ->
             history a ++ opStr op ++ history b
+
+
+none =
+    None
+
+
+number n =
+    Number n
 
 
 opStr op =
@@ -69,6 +70,9 @@ opStr op =
         Multiply ->
             "x"
 
+        Divide ->
+            "/"
+
 
 opFunc op =
     case op of
@@ -80,3 +84,6 @@ opFunc op =
 
         Multiply ->
             (*)
+
+        Divide ->
+            (/)

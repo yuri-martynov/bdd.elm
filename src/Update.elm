@@ -13,10 +13,10 @@ update msg model =
             Operation op model None
 
         ( Digit d, None ) ->
-            Number d
+            Number (toFloat d)
 
         ( Digit d, Number n ) ->
-            Number (n * 10 + d)
+            Number (n * 10 + toFloat d)
 
         ( _, Operation op a b ) ->
             Operation op a (update msg b)
