@@ -4,7 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import List
-import Model exposing (display, history)
+import Model exposing (display, history, Operations(..))
 import Msg exposing (..)
 
 
@@ -41,7 +41,8 @@ operation model =
 
 
 buttons =
-    [ btn Plus "+"
+    [ btn (OperationMsg Add) "+"
+    , btn (OperationMsg Sub) "-"
     , btn Equal "="
     ]
 

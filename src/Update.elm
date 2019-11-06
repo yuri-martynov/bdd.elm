@@ -5,33 +5,45 @@ import Msg exposing (..)
 
 
 update msg model =
-    case model of
-        None ->
-            case msg of
-                Digit d ->
-                    Number d
+    case ( msg, model ) of
+        ( Equal, _ ) ->
+            model |> result |> Number
 
-                _ ->
-                    model
+        ( OperationMsg op, _ ) ->
+            Operation op model None
 
-        Number n ->
-            case msg of
-                Digit d ->
-                    Number (n * 10 + d)
+        ( Digit d, None ) ->
+            Number d
 
-                Plus ->
-                    Add model None
+        ( Digit d, Number n ) ->
+            Number (n * 10 + d)
 
-                _ ->
-                    model
+        ( _, Operation op a b ) ->
+            Operation op a (update msg b)
 
-        Add a b ->
-            case msg of
-                Equal ->
-                    model |> result |> Number
 
-                Plus ->
-                    Add model None
 
-                _ ->
-                    Add a (update msg b)
+
+-- case model of
+--     None ->
+--         case msg of
+--             Digit d ->
+--                 Number d
+--             _ ->
+--                 model
+--     Number n ->
+--         case msg of
+--             Digit d ->
+--                 Number (n * 10 + d)
+--             Plus ->
+--                 Operation model None
+--             _ ->
+--                 model
+--     Operation a b ->
+--         case msg of
+--             Equal ->
+--                 model |> result |> Number
+--             Plus ->
+--                 Operation model None
+--             _ ->
+--                 Operation a (update msg b)

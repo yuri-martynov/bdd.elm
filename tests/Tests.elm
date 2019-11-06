@@ -2,7 +2,7 @@ module Tests exposing (..)
 
 import Expect exposing (..)
 import Init exposing (..)
-import Model exposing (create, display)
+import Model exposing (create, display, Operations(..))
 import Msg exposing (..)
 import Test exposing (..)
 import Update exposing (..)
@@ -40,21 +40,21 @@ suite =
             \_ ->
                 12
                     |> create
-                    |> update Plus
+                    |> update (OperationMsg Add)
                     |> display
                     |> equal 12
         , test "Given 13 entered when + is clicked displays 13" <|
             \_ ->
                 13
                     |> create
-                    |> update Plus
+                    |> update (OperationMsg Add)
                     |> display
                     |> equal 13
         , test "Given 13 entered when + is clicked and 3 is clicked displays 3" <|
             \_ ->
                 13
                     |> create
-                    |> update Plus
+                    |> update (OperationMsg Add)
                     |> update (Digit 3)
                     |> display
                     |> equal 3
@@ -63,7 +63,7 @@ suite =
             \_ ->
                 13
                     |> create
-                    |> update Plus
+                    |> update (OperationMsg Add)
                     |> update (Digit 0)
                     |> display
                     |> equal 0
@@ -72,9 +72,9 @@ suite =
             \_ ->
                 13
                     |> create
-                    |> update Plus
+                    |> update (OperationMsg Add)
                     |> update (Digit 1)
-                    |> update Plus
+                    |> update (OperationMsg Add)
                     |> display
                     |> equal 14
 
@@ -84,7 +84,7 @@ suite =
                 13
                     |> create
                     -- when | test
-                    |> update Plus
+                    |> update (OperationMsg Add)
                     |> update (Digit 3)
                     |> update Equal
                     |> display

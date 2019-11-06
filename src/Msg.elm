@@ -1,7 +1,9 @@
 module Msg exposing (..)
 
+import Model exposing (Operations)
+
 
 type Msg
     = Digit Int
-    | Plus 
+    | OperationMsg Operations 
     | Equal

@@ -3,8 +3,12 @@ module Model exposing (..)
 
 type Model
     = Number Int
-    | Add Model Model
+    | Operation Operations Model Model
     | None
+
+type Operations
+    = Add
+    | Sub
 
 
 create n =
@@ -14,10 +18,10 @@ create n =
 display model =
     case model of
 
-        Add a None -> 
+        Operation _ a None -> 
             result a
 
-        Add _ b ->
+        Operation _ _ b ->
             result b
 
         _ ->
@@ -32,8 +36,10 @@ result model =
         Number n ->
             n
 
-        Add a b ->
-            result a + result b
+        Operation op a b ->
+            case op of
+               Add -> result a + result b
+               Sub -> result a - result b
 
 
 history model =
@@ -41,4 +47,10 @@ history model =
     case model of
         None -> ""
         Number n-> String.fromInt n
-        Add a b -> history a ++ " + " ++ history b
+        Operation op a b -> history a ++ (opstr op) ++ history b
+
+
+opstr op =
+    case op of
+       Add -> "+"
+       Sub -> "-"
