@@ -33,11 +33,13 @@ typed model =
 
 
 operation model =
-    div [ class "calc-operation" ] []
+     []
+     |> div [ class "calc-operation" ]
 
 
 buttons =
     [ btn Plus "+"
+    , btn Equal "="
     ]
 
 

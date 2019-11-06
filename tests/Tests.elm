@@ -12,9 +12,6 @@ suite =
     describe "calculator"
         [ test "Starts with 0" <|
             \_ ->
-                -- a |> b = b a
-                -- sin 90 = 90 |> sin
-                -- abs (sin 90) = 90 |> sin |> abs
                 -- equal 0 (display init)
                 init
                     |> display
@@ -61,4 +58,36 @@ suite =
                     |> update (Digit 3)
                     |> display
                     |> equal 3
+
+        , test "Given 13 entered when + is clicked and 0 is clicked displays 0" <|
+            \_ ->
+                13
+                    |> create
+                    |> update Plus
+                    |> update (Digit 0)
+                    |> display
+                    |> equal 0
+
+        , test "Given 13 entered when + is clicked and 1 is clicked and + clicked displays 14" <|
+            \_ ->
+                13
+                    |> create
+                    |> update Plus
+                    |> update (Digit 1)
+                    |> update Plus
+                    |> display
+                    |> equal 14
+
+        , test "Given 13 entered when + is clicked and 3 is clicked when = cliked display 16" <|
+            \_ ->
+                -- 1 given(setup),  
+                13
+                    |> create
+                    -- when | test
+                    |> update Plus
+                    |> update (Digit 3)
+                    |> update Equal
+                    |> display
+                    -- then | check
+                    |> equal 16                    
         ]

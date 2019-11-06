@@ -4,6 +4,7 @@ module Model exposing (..)
 type Model
     = Number Int
     | Add Model Model
+    | None
 
 create n = Number n
 
@@ -12,8 +13,12 @@ display model =
         Number n ->
             n
 
-        Add (Number n) (Number 0) ->
-            n
+        None ->
+            0
+
+        Add a None ->
+            display a 
 
         Add _ b ->
             display b
+

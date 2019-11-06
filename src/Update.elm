@@ -9,8 +9,18 @@ update msg model =
         ( Digit d, Number n ) ->
             Number (n * 10 + d)
 
+        ( Digit d, None ) ->
+            Number d
+
         ( Plus, _ ) ->
-            Add model (Number 0)
+            Add model None
+
+        ( Equal, Add (Number a) (Number b) ) ->
+             Number (a + b)
 
         ( _, Add old n ) ->
             Add old (update msg n)
+
+        _ -> model
+
+
