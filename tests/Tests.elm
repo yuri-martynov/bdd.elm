@@ -68,15 +68,15 @@ suite =
                     |> display
                     |> equal 0
 
-        -- , test "Given 13 entered when + is clicked and 1 is clicked and + clicked displays 14" <|
-        --     \_ ->
-        --         13
-        --             |> create
-        --             |> update Plus
-        --             |> update (Digit 1)
-        --             |> update Plus
-        --             |> display
-        --             |> equal 14
+        , test "Given 13 entered when + is clicked and 1 is clicked and + clicked displays 14" <|
+            \_ ->
+                13
+                    |> create
+                    |> update Plus
+                    |> update (Digit 1)
+                    |> update Plus
+                    |> display
+                    |> equal 14
 
         , test "Given 13 entered when + is clicked and 3 is clicked when = cliked display 16" <|
             \_ ->

@@ -30,5 +30,8 @@ update msg model =
                 Equal ->
                     model |> result |> Number
 
+                Plus ->
+                    Add model None
+
                 _ ->
                     Add a (update msg b)

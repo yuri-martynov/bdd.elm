@@ -4,7 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import List
-import Model exposing (display)
+import Model exposing (display, history)
 import Msg exposing (..)
 
 
@@ -33,7 +33,10 @@ typed model =
 
 
 operation model =
-     []
+     model
+     |> history
+     |> text
+     |> List.singleton
      |> div [ class "calc-operation" ]
 
 
