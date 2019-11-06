@@ -10,15 +10,18 @@ create n = Number n
 
 display model =
     case model of
-        Number n ->
-            n
-
-        None ->
-            0
-
         Add a None ->
-            display a 
+            result a 
 
         Add _ b ->
-            display b
+            result b
 
+        _ ->
+            result model
+
+
+result model =
+    case model of
+        None -> 0
+        Number n -> n
+        Add a b -> result a + result b

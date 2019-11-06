@@ -1,26 +1,34 @@
 module Update exposing (update)
 
-import Model exposing (..)
+import Model exposing (Model(..), result)
 import Msg exposing (..)
 
 
 update msg model =
-    case ( msg, model ) of
-        ( Digit d, Number n ) ->
-            Number (n * 10 + d)
+    case model of
+        None ->
+            case msg of
+                Digit d ->
+                    Number d
 
-        ( Digit d, None ) ->
-            Number d
+                _ ->
+                    model
 
-        ( Plus, _ ) ->
-            Add model None
+        Number n ->
+            case msg of
+                Digit d ->
+                    Number (n * 10 + d)
 
-        ( Equal, Add (Number a) (Number b) ) ->
-             Number (a + b)
+                Plus ->
+                    Add model None
 
-        ( _, Add old n ) ->
-            Add old (update msg n)
+                _ ->
+                    model
 
-        _ -> model
+        Add a b ->
+            case msg of
+                Equal ->
+                    model |> result |> Number
 
-
+                _ ->
+                    Add a (update msg b)
