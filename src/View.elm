@@ -4,7 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import List
-import Model exposing (display, history, Operations(..))
+import Model exposing (Operations(..), display, history)
 import Msg exposing (..)
 
 
@@ -33,16 +33,17 @@ typed model =
 
 
 operation model =
-     model
-     |> history
-     |> text
-     |> List.singleton
-     |> div [ class "calc-operation" ]
+    model
+        |> history
+        |> text
+        |> List.singleton
+        |> div [ class "calc-operation" ]
 
 
 buttons =
     [ btn (OperationMsg Add) "+"
     , btn (OperationMsg Sub) "-"
+    , btn (OperationMsg Multiply) "x"
     , btn Equal "="
     ]
 

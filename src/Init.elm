@@ -1,7 +1,7 @@
 module Init exposing (init)
 
-import Model exposing (create)
+import Model exposing (none)
 
 
 init =
-    create 0
+    none

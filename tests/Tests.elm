@@ -2,7 +2,7 @@ module Tests exposing (..)
 
 import Expect exposing (..)
 import Init exposing (..)
-import Model exposing (create, display, Operations(..))
+import Model exposing (number, display, Operations(..))
 import Msg exposing (..)
 import Test exposing (..)
 import Update exposing (..)
@@ -39,21 +39,21 @@ suite =
         , test "Given 12 entered when + is clicked displays 12" <|
             \_ ->
                 12
-                    |> create
+                    |> number
                     |> update (OperationMsg Add)
                     |> display
                     |> equal 12
         , test "Given 13 entered when + is clicked displays 13" <|
             \_ ->
                 13
-                    |> create
+                    |> number
                     |> update (OperationMsg Add)
                     |> display
                     |> equal 13
         , test "Given 13 entered when + is clicked and 3 is clicked displays 3" <|
             \_ ->
                 13
-                    |> create
+                    |> number
                     |> update (OperationMsg Add)
                     |> update (Digit 3)
                     |> display
@@ -62,7 +62,7 @@ suite =
         , test "Given 13 entered when + is clicked and 0 is clicked displays 0" <|
             \_ ->
                 13
-                    |> create
+                    |> number
                     |> update (OperationMsg Add)
                     |> update (Digit 0)
                     |> display
@@ -71,7 +71,7 @@ suite =
         , test "Given 13 entered when + is clicked and 1 is clicked and + clicked displays 14" <|
             \_ ->
                 13
-                    |> create
+                    |> number
                     |> update (OperationMsg Add)
                     |> update (Digit 1)
                     |> update (OperationMsg Add)
@@ -82,7 +82,7 @@ suite =
             \_ ->
                 -- 1 given(setup),  
                 13
-                    |> create
+                    |> number
                     -- when | test
                     |> update (OperationMsg Add)
                     |> update (Digit 3)

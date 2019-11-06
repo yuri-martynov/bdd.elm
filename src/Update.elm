@@ -23,27 +23,3 @@ update msg model =
 
 
 
-
--- case model of
---     None ->
---         case msg of
---             Digit d ->
---                 Number d
---             _ ->
---                 model
---     Number n ->
---         case msg of
---             Digit d ->
---                 Number (n * 10 + d)
---             Plus ->
---                 Operation model None
---             _ ->
---                 model
---     Operation a b ->
---         case msg of
---             Equal ->
---                 model |> result |> Number
---             Plus ->
---                 Operation model None
---             _ ->
---                 Operation a (update msg b)
